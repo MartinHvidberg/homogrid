@@ -1,5 +1,4 @@
 import os, sys
-#import ogr
 import numpy as np
 import homogrid_anal
 
@@ -19,17 +18,27 @@ with open(str_dir+str_dirdel+str_fn, 'r') as f:
         lst_data.append(tup_line)
 print "length( list of tuples):", len(lst_data)
 
-# make numpy array
-npa_data = np.asarray(lst_data)
-del lst_data
+# make numpy array, of coordinates only
+col_north = 2
+col_east = 1
+lst_data_coor = [(d[col_east], d[col_north]) for d in lst_data]
+print "A", lst_data_coor[:3]
+npa_data_coor = np.asarray(lst_data_coor)
+print "B", npa_data_coor[:3]
 
 lst_grid_size = [100000,50000,10000,5000,1000,500,100]
+# Append DKN LL-values
+npa_data_coor = homogrid_anal.add_grid_ll_vals(npa_data_coor,lst_grid_size)
+print "C", npa_data_coor[:3]
 
-# Append DKN lables
-npa_data = homogrid_anal.add_gridvals(npa_data,lst_grid_size)
 # Build dic of stat
-dic_stat = homogrid_anal.grid_stat(npa_data,lst_grid_size)
-print "dic_stat", dic_stat
+dic_stat = homogrid_anal.grid_stat(npa_data_coor,lst_grid_size)
+for keyn in dic_stat.keys()[:4]:
+    print "dic_stat", keyn, str(type(dic_stat[keyn]))
+    for keynn in dic_stat[keyn].keys()[:4]:
+        print "  two:", keynn, dic_stat[keyn][keynn]
+sys.exit(0)
+
 # Append Final lable, given a specific 'max points per cell' value
 npa_data = homogrid_anal.add_lable(npa_data,dic_stat,1000)
 
