@@ -6,6 +6,7 @@ import numpy as np
 
 # set the working directory
 os.chdir(r"/home/martin/Work")
+os.chdir(r"C:\Martin\Work\qc_kilde_mat_jst_kf_pos")
 
 # open the output text file for writing
 file = open('qc_kilde_mat_jst_kf_pos.txt', 'w')
