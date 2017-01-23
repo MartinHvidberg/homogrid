@@ -5,25 +5,30 @@ import numpy as np
 """ Homogeneous gridding of inhomogeneous point swarms """
 
 # set the working directory
-os.chdir(r"/home/martin/Work")
-os.chdir(r"C:\Martin\Work\qc_kilde_mat_jst_kf_pos")
+str_dir = r"/home/martin/Work"
+str_dir = r"C:\Martin\Work\qc_kilde_mat_jst_kf_pos"
+os.chdir(str_dir)
 
-# open the output text file for writing
-file = open('qc_kilde_mat_jst_kf_pos.txt', 'w')
+# open the output text fil_out for writing
+fil_out = open('qc_kilde_mat_jst_kf_pos_Bornholm.txt', 'w')
+print "output dir:", str_dir
+print "output file:", fil_out
 
-# get the shapefile driver
+# get the shapefil_out driver
 driver = ogr.GetDriverByName('ESRI Shapefile')
+print "using input driver:", driver
 
 # open the data source
 datasource = driver.Open(r"qc_kilde_mat_jst_kf_pos.shp", 0)
+
 if datasource is None:
-    print 'Could not open file'
+    print 'Could not open fil_out'
     sys.exit(1)
 
 # get the data layer
 layer = datasource.GetLayer()
 
-# Get Shapefile Fields and Types
+# Get Shapefil_out Fields and Types
 layerDefinition = layer.GetLayerDefn()
 
 print "Name  -  Type  Width  Precision"
@@ -35,7 +40,7 @@ for i in range(layerDefinition.GetFieldCount()):
     GetPrecision = layerDefinition.GetFieldDefn(i).GetPrecision()
     print fieldName + " - " + fieldType+ " " + str(fieldWidth) + " " + str(GetPrecision)
 
-# loop through the features in the layer, write selected fields to an output text file, and save them in a list of tuples
+# loop through the features in the layer, write selected fields to an output text fil_out, and save them in a list of tuples
 feature = layer.GetNextFeature()
 lst_data = list()
 h1, h0 = (0,0)
@@ -52,8 +57,8 @@ while feature:
     # lus                                                                             # lus Bornholm
     if x>800000:
         h1 += 1
-        # write info out to the text file
-        file.write(str(id) + ' ' + str(x) + ' ' + str(y) + ' ' + str(komm) + '\n')
+        # write info out to the text fil_out
+        fil_out.write(str(id) + ' ' + str(x) + ' ' + str(y) + ' ' + str(komm) + '\n')
         # add to list
         lst_data.append((int(id),float(x),float(y),int(komm)))
     else:
@@ -63,9 +68,8 @@ while feature:
     feature.Destroy()
     feature = layer.GetNextFeature()
 
-# close the data source and text file
+# close the data source and text fil_out
 datasource.Destroy()
-file.close()
 
 print "hit:", h1, "nay:", h0
 

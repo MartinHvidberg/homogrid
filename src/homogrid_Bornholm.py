@@ -3,13 +3,16 @@ import numpy as np
 import homogrid_anal
 
 # set the working directory
-str_dir = r"/home/martin/Work" 
+str_dir = r"/home/martin/Work"  # home
+str_dir = r"C:/Martin/Work/qc_kilde_mat_jst_kf_pos" # work
 os.chdir(str_dir)
 str_fn = r"qc_kilde_mat_jst_kf_pos_Bornholm.txt"
-str_dirdel = r"/"
+str_dirdel = "/" # Unix style
+str_dirdel = "/" # win style
 
 # Build list of input data (id, E, N, ...)
 lst_data = list()
+print "opening:", str_dir, str_dirdel, str_fn
 with open(str_dir+str_dirdel+str_fn, 'r') as f:
     for line in f:
         lst_line = [l for l in line.strip().split(" ")]
