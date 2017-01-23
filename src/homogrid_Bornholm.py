@@ -7,8 +7,8 @@ import homogrid_anal
 str_dir = r"/home/martin/Work"  # home
 str_dir = r"C:/Martin/Work/qc_kilde_mat_jst_kf_pos" # work
 os.chdir(str_dir)
-str_fn = r"qc_kilde_mat_jst_kf_pos_Bornholm.txt"
-str_out_fn = r"qc_kilde_mat_jst_kf_pos_Bornholm_hg1000.txt"
+str_fn = r"qc_kilde_mat_jst_kf_pos_DK.txt" #                                    -- Lus (qc_kilde_mat_jst_kf_pos_Bornholm.txt/qc_kilde_mat_jst_kf_pos_DK.txt)
+str_out_fn = r"qc_kilde_mat_jst_kf_posDK_hg1000.txt" #                         -- Lus (qc_kilde_mat_jst_kf_pos_Bornholm_hg1000.txt/qc_kilde_mat_jst_kf_pos_DK_hg1000.txt)
 str_dirdel = "/" # Unix style
 str_dirdel = "/" # win style
 # assumed order of each line, first column being 0

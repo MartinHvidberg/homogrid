@@ -10,7 +10,7 @@ str_dir = r"C:\Martin\Work\qc_kilde_mat_jst_kf_pos"
 os.chdir(str_dir)
 
 # open the output text fil_out for writing
-fil_out = open('qc_kilde_mat_jst_kf_pos_Bornholm.txt', 'w')
+fil_out = open('qc_kilde_mat_jst_kf_pos_DK.txt', 'w')
 print "output dir:", str_dir
 print "output file:", fil_out
 
@@ -54,8 +54,8 @@ while feature:
     x = geom.GetX()
     y = geom.GetY()
     
-    # lus                                                                             # lus Bornholm
-    if x>800000:
+    # lus                                                                             # lus Bornholm (x>800000/x>0)
+    if x>0:
         h1 += 1
         # write info out to the text fil_out
         fil_out.write(str(id) + ' ' + str(x) + ' ' + str(y) + ' ' + str(komm) + '\n')
