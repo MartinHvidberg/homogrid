@@ -58,9 +58,6 @@ for keyn in dic_stat.keys():
         
 # Write output file, appending Final lable, given a specific 'max points per cell' value
 print "\nF"
-for s in [100000,50000,10000]:#,5000,1000,500,100]:
-    for keyx in dic_stat[50000].keys():
-        print s, keyx
 finest_grid = sorted(lst_grid_size)[0:1]
 print "finest_grid",finest_grid 
 if len(lst_lines) == len(npa_data_coor):
@@ -73,9 +70,12 @@ with open(str_out_fn, "w") as outfile:
         all_coor = npa_data_coor[n]
         best_cell = homogrid_anal.best_grid_cell((num_coor_e,num_coor_n),all_coor,dic_stat,num_max_points)
         if n == 136:
+            print "\ng:case..."
             print "line", lst_line
+            print "num_coor:", num_coor_e, num_coor_n
             print "allcoor:", str(type(all_coor)), all_coor
             print "bestcell:", best_cell
+        outfile.write(lst_lines[n].strip()+csv_delim+best_cell+"\n")
 print "closed out file:", outfile
 
 print "Done..."

@@ -55,9 +55,11 @@ def best_grid_cell(tup_coor,all_coor,dic_stat,max_cnt=1000):
                         lable_c = int(all_coor[2+(n*2)+1])
                         lable = lable_a+"_"+str(lable_b)+"_"+str(lable_c)
                         cnt = dic_stat[key_s[n]][lable]
-                        if n==136:
-                            print lable, cnt
-                    return 
+                        if  tup_coor == (863191.346501,6129949.6485):
+                            print "Catch136", lable, cnt
+                        if cnt<=max_cnt:
+                            return lable
+                    return lable
                 else:
                     print "NOT positive integer:", str(type(max_cnt)), max_cnt
             else:
