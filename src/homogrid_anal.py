@@ -36,10 +36,11 @@ def grid_stat(a,lgs):
     input lgs "lst grid size" (list of integers): like [100000,50000,10000,5000,1000,500,100] """
     dic_stat = dict()
     for s in enumerate(sorted(lgs, reverse=True)):
+        print s
         #dic_stat[s[1]] = dict() # make an empty dic, for this grid size
         # make km_lable from gridsize
         # make a vector of lables
-        vals_lab = [gridsize_to_kmlable(s[1])+"_"+str(l[0])+"_"+str(l[1]) for l in zip(a[:,0],a[:,1])]
+        vals_lab = [gridsize_to_kmlable(s[1])+"_"+str(int(l[0]))+"_"+str(int(l[1])) for l in zip(a[:,2+s[0]],a[:,2+s[0]+1])]
         unique, counts = np.unique(vals_lab, return_counts=True)
         dic_stat[s[1]] = dict(zip(unique, counts))
         #print s[1], "zip Nor", dic_stat[s[1]]['N']

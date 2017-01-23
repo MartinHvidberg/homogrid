@@ -25,17 +25,19 @@ print "length( list of tuples):", len(lst_data)
 col_north = 2
 col_east = 1
 lst_data_coor = [(d[col_east], d[col_north]) for d in lst_data]
-print "A", lst_data_coor[:3]
+print "\nA", lst_data_coor[:3]
 npa_data_coor = np.asarray(lst_data_coor)
-print "B", npa_data_coor[:3]
+print "\nB", npa_data_coor[:3]
 
 lst_grid_size = [100000,50000,10000,5000,1000,500,100]
 # Append DKN LL-values
 npa_data_coor = homogrid_anal.add_grid_ll_vals(npa_data_coor,lst_grid_size)
-print "C", npa_data_coor[:3]
+print "\nC", npa_data_coor[:3]
 
 # Build dic of stat
+print "\nD"
 dic_stat = homogrid_anal.grid_stat(npa_data_coor,lst_grid_size)
+print "\nE"
 for keyn in dic_stat.keys()[:4]:
     print "dic_stat", keyn, str(type(dic_stat[keyn]))
     for keynn in dic_stat[keyn].keys()[:4]:
