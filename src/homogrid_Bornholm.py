@@ -18,7 +18,7 @@ csv_delim = " " # file is 'space delimited'
 # set grid sizes to use
 lst_grid_size = [100000,50000,10000,5000,1000,500,100]
 # criteria: max points per grid-cell
-num_max_points = 1000
+num_max_points = 5000
 
 # Build list of input data (id, E, N, ...)
 lst_data = list()
