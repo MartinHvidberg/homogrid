@@ -63,7 +63,7 @@ print "finest_grid",finest_grid
 if len(lst_lines) == len(npa_data_coor):
     print "length match between raw file read and numpy matrix:", len(npa_data_coor)
 with open(str_out_fn, "w") as outfile:
-    for n in range(len(lst_lines)-1): # Count through raw file read and numpy matrix
+    for n in range(len(lst_lines)): # Count through raw file read and numpy matrix
         lst_line = lst_lines[n].split(csv_delim)
         num_coor_n = float(lst_line[num_north].strip()) # if lats in line, may include '\n', just being causious...
         num_coor_e = float(lst_line[num_east].strip())
